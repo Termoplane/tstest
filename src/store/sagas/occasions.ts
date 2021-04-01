@@ -11,7 +11,6 @@ function getOccasions() {
 }
 
 function* workerFetchOccasions() {
-    console.log("Enter worker");
     const response: {
         data: Occasion[]
     } = yield call(getOccasions);
