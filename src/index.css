@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'GothamProRegular';
+  src: url("./assets/fonts/GothamPro.woff") format("woff");
+  font-style: normal;
+	font-weight: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  font-family: 'GothamProRegular';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  padding: 50px 230px;
+}
