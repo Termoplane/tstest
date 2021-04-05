@@ -21,7 +21,7 @@ export const Modal = ({open, close, children}: ModalProps) => {
     if (!open) return null
 
     return ReactDOM.createPortal(
-        <ModalContainer onClick={closeModal}>
+        <ModalContainer onMouseDown={closeModal}>
             <ModalWindow>
                 { children }
             </ModalWindow>

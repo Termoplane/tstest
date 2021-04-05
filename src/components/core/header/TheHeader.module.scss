@@ -2,13 +2,22 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 60px;
-    &__input {
-
-    }
     &__label {
         color: #a3a3a3;
         font-weight: 600;
         height: 14px;
         margin-top: 14px;
+    }
+}
+
+.modalFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__buttons {
+        color: #a3a3a3;
+        :last-child {
+            margin-right: 0px;
+        }
     }
 }

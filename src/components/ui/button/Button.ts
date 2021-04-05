@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 type Props = {
     small?: boolean,
-    big?: boolean
+    big?: boolean,
+    color?: string
 }
 
 export const UiButton = styled.button`
@@ -13,10 +14,11 @@ export const UiButton = styled.button`
     box-shadow: 0px 0px 0px 3px #a9d85f;
     background: transparent;
     border: none;
-    color: #ffffff;
+    color: ${(p: Props) => p.color || '#ffffff'};
     margin-right: ${(p: Props) => p.small ? "17px" : p.big ? "30px" : "30px" };
     &:hover {
         background: #a9d85f;
         cursor: pointer;
+        color: #ffffff;
     }
 `

@@ -39,16 +39,26 @@ export const TheHeader = (): JSX.Element => {
                     </div>
                     <div style={{display: "flex", justifyContent: "space-between"}}>
                         <div className={styles.inputContainer} style={{width: "60%"}}>
-                            <TextInput className={styles.inputContainer__input} id="occasion" />
-                            <label className={styles.inputContainer__label} htmlFor="occasion">Место</label>
+                            <TextInput className={styles.inputContainer__input} id="place" />
+                            <label className={styles.inputContainer__label} htmlFor="place">Место</label>
                         </div>
                         <div className={styles.inputContainer} style={{width: "30%"}}>
-                            <TextInput className={styles.inputContainer__input} id="occasion" />
-                            <label className={styles.inputContainer__label} htmlFor="occasion">Время</label>
+                            <TextInput className={styles.inputContainer__input} id="time" />
+                            <label className={styles.inputContainer__label} htmlFor="time">Время</label>
                         </div>
                     </div>
-                    <div className={styles.inputContainer}>
-                        <Textarea className={styles.inputContainer__input} id="occasion" placeholder="Описание" />
+                    <div className={styles.inputContainer} style={{marginBottom: "20px"}}>
+                        <Textarea className={styles.inputContainer__input} id="description" placeholder="Описание" style={{height: "160px", maxWidth: "555px"}} />
+                    </div>
+                    <div className={styles.modalFooter}>
+                        <div className={styles.modalFooter__input}>
+                            <input type="checkbox" id="important"></input>
+                            <label htmlFor="important">Пометить событие как важное</label>
+                        </div>
+                        <div className={styles.modalFooter__buttons}>
+                            <UiButton small color="#a3a3a3">Готово</UiButton>
+                            <UiButton small color="#a3a3a3">Удалить</UiButton>
+                        </div>
                     </div>
                 </form>
             </Modal>

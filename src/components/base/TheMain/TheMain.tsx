@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchOccasions } from "../../../store/occasions/actions"
 import { Occasion } from "../../../store/occasions/types"
 import { IApplicationState } from "../../../store/store"
+import OccasionCard from "../../ui/occasion-card/OccasionCard"
 import { MainProps } from "./typings"
 
 export const TheMain = (props: MainProps) =>  {
@@ -10,16 +11,17 @@ export const TheMain = (props: MainProps) =>  {
 
     const occasions = useSelector((state: IApplicationState) => state.occasions)
 
+    const occasionList = occasions.map((occasion: Occasion) => {
+        return <OccasionCard occasion={occasion} />
+    })
+
     useEffect(() => {
         dispatch(fetchOccasions())
     }, [dispatch])
-    
+
     return (
         <div>
-            <div>occasions</div>
-            <div>{occasions && occasions.map(
-                (item: Occasion) => <div key={item.id}>{item.occasion}</div>
-            )}</div>
+            <div>{occasions && occasionList}</div>
         </div>
     )
 }
