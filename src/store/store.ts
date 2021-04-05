@@ -1,8 +1,14 @@
 import { createStore, applyMiddleware } from "redux"
-import rootReducer from "./reducers/index"
+import rootReducer from "./rootReducer"
 import createSagaMiddleware from "redux-saga"
-import occasionsSaga from "./sagas/occasions"
+import occasionsSaga from "./occasions/sagas"
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { Occasion } from "./occasions/types";
+
+// The top-level state object
+export interface IApplicationState {
+	occasions: Occasion[];
+}
 
 const sagaMiddleware = createSagaMiddleware()
 

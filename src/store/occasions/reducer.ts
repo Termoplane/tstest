@@ -1,4 +1,4 @@
-import { FETCH_OCCASIONS, UPDATE_OCCASIONS } from "../actions/occasionsActions"
+import { CLEAR_OCCASIONS, Occasion, UPDATE_OCCASIONS } from "./types";
 
 const initialState: Occasion[] = [
     {
@@ -15,6 +15,8 @@ export const occasionReducer = (state = initialState, action: Action) => {
     console.log(action.type);
     
     switch (action.type) {
+        case CLEAR_OCCASIONS:
+            return []
         case UPDATE_OCCASIONS:
             return [
                 ...state,
