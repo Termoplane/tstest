@@ -12,7 +12,7 @@ export const TheMain = (props: MainProps) =>  {
     const occasions = useSelector((state: IApplicationState) => state.occasions)
 
     const occasionList = occasions.map((occasion: Occasion) => {
-        return <OccasionCard occasion={occasion} />
+        return <OccasionCard key={occasion.id} occasion={occasion} />
     })
 
     useEffect(() => {

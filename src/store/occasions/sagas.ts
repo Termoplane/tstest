@@ -1,6 +1,6 @@
 import { updateOccasions } from "./actions"
 import { takeEvery, put, call } from "redux-saga/effects"
-import { jsonApi } from '../../api/index'
+import { jsonApi } from '../../services/api/index'
 import { CLEAR_OCCASIONS, FETCH_OCCASIONS, Occasion, RENEW_OCCASIONS } from "./types";
 
 function* workerFetchOccasions() {

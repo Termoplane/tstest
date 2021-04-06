@@ -1,0 +1,29 @@
+.tooltip-wrapper {
+    position: relative;
+
+}
+
+.tooltip {
+    position: absolute;
+    border-radius: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 14px;
+    color: #ffffff;
+    margin-top: 7px;
+    &::before {
+        content: "";
+        left: 50%;
+        transform: translateX(-50%);
+        border: solid transparent;
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-width: 7px;
+        bottom: 100%;
+        border-bottom-color: rgba(0, 0, 0, 0.7);;
+    }
+}
