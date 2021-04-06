@@ -3,6 +3,7 @@ export const CREATE_OCCASION = "CREATE_OCCASION"
 export const UPDATE_OCCASIONS = "UPDATE_OCCASIONS"
 export const CLEAR_OCCASIONS = "CLEAR_OCCASIONS"
 export const RENEW_OCCASIONS = "RENEW_OCCASIONS"
+export const ADD_OCCASION = "ADD_OCCASION"
 
 export interface Occasion {
     id: number,

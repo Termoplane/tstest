@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import logo from "../../../assets/images/header/header_logo.png"
 import map from '../../../assets/images/header/map.png'
 import cross from '../../../assets/images/cross.png'
@@ -12,12 +12,21 @@ import { UiButton } from "../../ui/button/Button"
 import { Textarea } from "../../ui/input/Textarea"
 import { Tooltip } from "../../ui/tooltip/Tooltip"
 import { jsonApi } from "../../../services/api"
+import { createOccasion } from "../../../store/occasions/actions"
+import { IApplicationState } from "../../../store/store"
 
 
 export const TheHeader = (): JSX.Element => {
     const [showModal, setShowModal] = useState<boolean>(false)
+    const stateOccasions = useSelector((state: IApplicationState) => state.occasions)
+
+    const [occasion, setOccasion] = useState<string>('')
+    const [place, setPlace] = useState<string>('')
+    const [time, setTime] = useState<string>('')
+    const [description, setDescription] = useState<string>('')
+
     const dispatch = useDispatch();
-    const place = useRef<any>()
+    const placeRef = useRef<any>()
 
     const renewOccasions = () => {
         dispatch({type: RENEW_OCCASIONS})
@@ -33,15 +42,27 @@ export const TheHeader = (): JSX.Element => {
                     localityLanguage: 'ru'
                 }
             })
-            place.current.value = location.data.city
+            placeRef.current.value = location.data.city
         }
 
         navigator.geolocation.getCurrentPosition(success)
     }
 
-    const addOccasion = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    const addOccasion = async (e: React.SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log(e);
+
+        const payload = {
+            id: stateOccasions[stateOccasions.length - 1].id + 1,
+            occasion,
+            place,
+            time: new Date(time),
+            description,
+            important: false
+        }
+
+        dispatch(createOccasion(payload))
+        setShowModal(false)
     }
 
     return (
@@ -65,12 +86,12 @@ export const TheHeader = (): JSX.Element => {
                 <form onSubmit={addOccasion} className={styles.modal}>
                     <img src={cross} className={styles.modal__close} alt="" onClick={() => {setShowModal(false)}}/>
                     <div className={styles.inputContainer} style={{width: "555px"}}>
-                        <TextInput className={styles.inputContainer__input} id="occasion" />
+                        <TextInput className={styles.inputContainer__input} id="occasion" onChange={e => {setOccasion(e.target.value)}} />
                         <label className={styles.inputContainer__label} htmlFor="occasion">Событие</label>
                     </div>
                     <div style={{display: "flex", justifyContent: "space-between"}}>
                         <div className={styles.inputContainer} style={{width: "60%"}}>
-                            <TextInput className={styles.inputContainer__input} id="place" ref={place} />
+                            <TextInput className={styles.inputContainer__input} id="place" ref={placeRef} onChange={e => {setPlace(e.target.value)}} />
                             <div style={{display: "flex", justifyContent: "space-between", alignItems: "baseline"}}>
                                 <label className={styles.inputContainer__label} htmlFor="place">Место</label>
                                 <Tooltip title="Вы можете отметить ваше местоположение при помощи карты">
@@ -79,12 +100,12 @@ export const TheHeader = (): JSX.Element => {
                             </div>
                         </div>
                         <div className={styles.inputContainer} style={{width: "30%"}}>
-                            <TextInput className={styles.inputContainer__input} id="time" />
+                            <TextInput className={styles.inputContainer__input} id="time" onChange={e => {setTime(e.target.value)}} />
                             <label className={styles.inputContainer__label} htmlFor="time">Время</label>
                         </div>
                     </div>
                     <div className={styles.inputContainer} style={{marginBottom: "20px"}}>
-                        <Textarea className={styles.inputContainer__input} id="description" placeholder="Описание" style={{height: "160px", maxWidth: "555px"}} />
+                        <Textarea className={styles.inputContainer__input} id="description" placeholder="Описание" style={{height: "160px", maxWidth: "555px"}} onChange={e => {setDescription(e.target.value)}} />
                     </div>
                     <div className={styles.modalFooter}>
                         <div className={styles.modalFooter__input}>

@@ -1,4 +1,4 @@
-import { CLEAR_OCCASIONS, Occasion, UPDATE_OCCASIONS } from "./types";
+import { ADD_OCCASION, CLEAR_OCCASIONS, Occasion, UPDATE_OCCASIONS } from "./types";
 
 const initialState: Occasion[] = [
     {
@@ -21,6 +21,11 @@ export const occasionReducer = (state = initialState, action: Action) => {
             return [
                 ...state,
                 ...action.payload
+            ]
+        case ADD_OCCASION:
+            return [
+                ...state,
+                action.payload
             ]
         default:
             return state
