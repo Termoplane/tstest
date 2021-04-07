@@ -1,14 +1,14 @@
 import { ADD_OCCASION, CLEAR_OCCASIONS, Occasion, UPDATE_OCCASIONS } from "./types";
 
 const initialState: Occasion[] = [
-    {
-        id: 0,
-        occasion: "Поездка",
-        place: "Марокко",
-        time: new Date(),
-        description: "Отдохнули, полепили, поварили, покурили",
-        important: true
-    }
+    // {
+    //     id: 0,
+    //     occasion: "Поездка",
+    //     place: "Марокко",
+    //     time: new Date(),
+    //     description: "Отдохнули, полепили, поварили, покурили",
+    //     important: true
+    // }
 ]
 
 export const occasionReducer = (state = initialState, action: Action) => {

@@ -6,7 +6,7 @@ export const RENEW_OCCASIONS = "RENEW_OCCASIONS"
 export const ADD_OCCASION = "ADD_OCCASION"
 
 export interface Occasion {
-    id: number,
+    _id?: string,
     occasion: string,
     place: string,
     time: Date | string,

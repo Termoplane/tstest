@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import logo from "../../../assets/images/header/header_logo.png"
 import map from '../../../assets/images/header/map.png'
 import cross from '../../../assets/images/cross.png'
@@ -13,12 +13,11 @@ import { Textarea } from "../../ui/input/Textarea"
 import { Tooltip } from "../../ui/tooltip/Tooltip"
 import { jsonApi } from "../../../services/api"
 import { createOccasion } from "../../../store/occasions/actions"
-import { IApplicationState } from "../../../store/store"
 
 
 export const TheHeader = (): JSX.Element => {
     const [showModal, setShowModal] = useState<boolean>(false)
-    const stateOccasions = useSelector((state: IApplicationState) => state.occasions)
+    // const stateOccasions = useSelector((state: IApplicationState) => state.occasions)
 
     const [occasion, setOccasion] = useState<string>('')
     const [place, setPlace] = useState<string>('')
@@ -53,7 +52,6 @@ export const TheHeader = (): JSX.Element => {
         console.log(e);
 
         const payload = {
-            id: stateOccasions[stateOccasions.length - 1].id + 1,
             occasion,
             place,
             time: new Date(time),
