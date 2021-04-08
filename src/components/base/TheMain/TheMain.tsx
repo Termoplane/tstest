@@ -4,6 +4,7 @@ import { fetchOccasions } from "../../../store/occasions/actions"
 import { Occasion } from "../../../store/occasions/types"
 import { IApplicationState } from "../../../store/store"
 import OccasionCard from "../../ui/occasion-card/OccasionCard"
+import { Spinner } from "../../ui/spinner/Spinner"
 import { MainProps } from "./typings"
 
 export const TheMain = (props: MainProps) =>  {
@@ -21,7 +22,7 @@ export const TheMain = (props: MainProps) =>  {
 
     return (
         <div>
-            <div>{occasions && occasionList}</div>
+            {occasions.length ? occasionList : <Spinner />}
         </div>
     )
 }

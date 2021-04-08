@@ -10,24 +10,28 @@ router.get('/occasions', async (req, res) => {
     res.send(todos)
 })
 
-router.post('/occasions', async (req, res) => {
-    console.log(req, "😒😒😒");
+router.post('/occasions', async (req, res) => {    
+    const occasionDoc = new Occasion({ ...req.body })
+    try {
+        await occasionDoc.save()
+        const todos = await Occasion.find({}).sort({time: "desc"})
+        res.send(todos)
+    } catch {
+        res.sendStatus(500)
+    }
+})
+
+router.delete('/occasions', async (req, res) => {
+    console.log(req.body, "😒😒😒😒😒😒😒😒");
     
-    const {occasion, time, place, description, important} = req.body
-
-    const occasionDoc = new Occasion({
-        occasion,
-        time,
-        place,
-        description,
-        important
-    })
-
-    await occasionDoc.save()
-
-    res.sendStatus(200)
-
-    console.log(occasionDoc);
+    const { _id } = req.body
+    try {
+        await Occasion.deleteOne({ _id })
+        const todos = await Occasion.find({}).sort({time: "desc"})
+        res.send(todos)
+    } catch {
+        res.sendStatus(500)
+    }
 })
 
 module.exports = router

@@ -2,9 +2,9 @@
     width: 100%;
     display: flex;
     background-color: #fff;
-    height: 138px;
+    min-height: 138px;
     margin-bottom: 15px;
-    padding: 37px 0 0 29px;
+    padding: 37px 29px 20px 29px;
     border-left: 3px solid #a9d85f;
     transition: border-left;
     position: relative;
@@ -20,6 +20,7 @@
     &__placeTime {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         width: 230px;
         span {
             font-size: 14px;

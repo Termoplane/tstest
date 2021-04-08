@@ -19,7 +19,6 @@ export const occasionReducer = (state = initialState, action: Action) => {
             return []
         case UPDATE_OCCASIONS:
             return [
-                ...state,
                 ...action.payload
             ]
         case ADD_OCCASION:

@@ -1,4 +1,4 @@
-import { UPDATE_OCCASIONS, FETCH_OCCASIONS, RENEW_OCCASIONS, Occasion, CREATE_OCCASION, ADD_OCCASION } from "./types"
+import { UPDATE_OCCASIONS, FETCH_OCCASIONS, RENEW_OCCASIONS, Occasion, CREATE_OCCASION, ADD_OCCASION, DELETE_OCCASION } from "./types"
 
 export const updateOccasions = (payload: Occasion[]) => ({
     type: UPDATE_OCCASIONS,
@@ -20,5 +20,10 @@ export const addOccasion = (occasion: Occasion) => ({
 
 export const createOccasion = (occasion: Occasion) => ({
     type: CREATE_OCCASION,
+    payload: occasion
+})
+
+export const deleteOccasion = (occasion: Occasion) => ({
+    type: DELETE_OCCASION,
     payload: occasion
 })
